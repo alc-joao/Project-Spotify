@@ -32,6 +32,21 @@ export const Sidebar: FC = () => {
           </S.SidebarNavItem>
         ))}
       </S.SidebarItens>
+
+      <S.Library>
+        {C.libraryItems.map((item) => (
+          <S.LibraryItem key={item.id} $type={item.type}>
+            <S.LibraryAlbum src={item.icon} alt={item.label} $type={item.type} />
+            <S.LibraryLabel $isOpen={isOpen}>{item.label}</S.LibraryLabel>
+          </S.LibraryItem>
+        ))}
+      </S.Library>
+      <S.Line></S.Line>
+      <S.Type $isOpen={isOpen}>
+        {C.typeMusics.map((item) => (
+          <S.TypeMusics key={item.name}>{item.name}</S.TypeMusics>
+        ))}
+      </S.Type>
     </S.Sidebar>
   );
 };
