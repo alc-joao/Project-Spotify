@@ -17,7 +17,7 @@ export const Sidebar: FC = () => {
         <S.ToggleButton type="button" onClick={handleToggleSidebar}>
           <S.ToggleIcon
             src={
-              isOpen ? '/svgs/sidebar/panel-left-close.svg' : '/svgs/sidebar/panel-right-close.svg'
+              isOpen ? '/svgs/sidebar/panel-left-close.svg' : '/svgs/sidebar/panel-right-open.svg'
             }
             alt="toggle sidebar"
           />
@@ -41,7 +41,9 @@ export const Sidebar: FC = () => {
           </S.LibraryItem>
         ))}
       </S.Library>
-      <S.Line></S.Line>
+
+      <S.Line />
+
       <S.Type $isOpen={isOpen}>
         {C.typeMusics.map((item) => (
           <S.TypeMusics key={item.name}>{item.name}</S.TypeMusics>

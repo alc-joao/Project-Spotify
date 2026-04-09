@@ -1,17 +1,14 @@
 'use client';
+
 import styled from 'styled-components';
-import { SIDEBAR_ANIMATION, SIDEBAR_WIDTH_CLOSED, SIDEBAR_WIDTH_OPEN } from './animation';
 
 export const Sidebar = styled.aside<{ $isOpen: boolean }>`
-  --SIDEBAR_WIDTH_OPEN: 31rem;
-
   background-color: ${({ theme }) => theme.black};
-  width: ${({ $isOpen }) => ($isOpen ? SIDEBAR_WIDTH_OPEN : SIDEBAR_WIDTH_CLOSED)};
+  width: ${({ $isOpen }) => ($isOpen ? '34rem' : '11rem')};
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  /* align-items: ${({ $isOpen }) => ($isOpen ? 'flex-start' : 'center')}; */
   gap: 3rem;
   padding: 3rem 2rem;
   overflow: hidden;
@@ -19,15 +16,13 @@ export const Sidebar = styled.aside<{ $isOpen: boolean }>`
 
   transition:
     width 0.9s ease,
-    padding ${SIDEBAR_ANIMATION},
-    align-items ${SIDEBAR_ANIMATION};
+    padding 0.9s ease;
 `;
 
 export const SidebarTop = styled.div<{ $isOpen: boolean }>`
   width: 100%;
   display: flex;
   align-items: center;
-  /* justify-content: ${({ $isOpen }) => ($isOpen ? 'flex-start' : 'center')}; */
   flex-shrink: 0;
 `;
 
@@ -43,7 +38,7 @@ export const ToggleButton = styled.button`
   align-items: center;
   justify-content: center;
   padding: 0;
-  transition: background-color ${SIDEBAR_ANIMATION};
+  transition: background-color 0.9s ease;
 
   &:hover {
     background-color: rgba(255, 255, 255, 0.08);
@@ -54,7 +49,7 @@ export const ToggleIcon = styled.img`
   width: 2.4rem;
   height: 2.4rem;
   object-fit: contain;
-  filter: brightness(0) invert(1); /* deixa branco */
+  filter: brightness(0) invert(1);
 `;
 
 export const SidebarItens = styled.div`
@@ -75,12 +70,13 @@ export const SidebarNavItem = styled.div<{ $active?: boolean; $isOpen: boolean }
   cursor: pointer;
   color: ${({ $active, theme }) => ($active ? theme.white : theme.cuteGrey)};
   transition:
-    color ${SIDEBAR_ANIMATION},
-    gap ${SIDEBAR_ANIMATION};
+    color 0.9s ease,
+    gap 0.9s ease;
 
   &:hover {
     color: ${({ theme }) => theme.white};
   }
+
   &:hover img {
     filter: brightness(0) invert(1);
   }
@@ -90,7 +86,7 @@ export const SidebarIcon = styled.img<{ $active?: boolean }>`
   width: 3.2rem;
   height: 3.2rem;
   flex-shrink: 0;
-  transition: filter ${SIDEBAR_ANIMATION};
+  transition: filter 0.9s ease;
   filter: ${({ $active }) => ($active ? 'brightness(0) invert(1)' : 'brightness(0) invert(0.7)')};
 `;
 
@@ -104,8 +100,8 @@ export const SidebarLabel = styled.span<{ $isOpen: boolean }>`
   max-width: ${({ $isOpen }) => ($isOpen ? '20rem' : '0')};
 
   transition:
-    opacity ${SIDEBAR_ANIMATION},
-    max-width ${SIDEBAR_ANIMATION};
+    opacity 0.9s ease,
+    max-width 0.9s ease;
 `;
 
 export const Library = styled.div`
@@ -123,7 +119,7 @@ export const LibraryItem = styled.div<{ $type?: string }>`
   align-items: center;
   cursor: pointer;
   color: ${({ $type, theme }) => ($type === 'action' ? theme.cuteGrey : theme.white)};
-  transition: color ${SIDEBAR_ANIMATION};
+  transition: color 0.9s ease;
 
   &:hover {
     color: ${({ theme }) => theme.white};
@@ -134,6 +130,7 @@ export const LibraryAlbum = styled.img<{ $type?: string }>`
   width: 7rem;
   height: 7rem;
   flex-shrink: 0;
+  border-radius: 0.5rem;
 
   ${({ $type }) =>
     $type === 'action' &&
@@ -149,8 +146,12 @@ export const LibraryLabel = styled.span<{ $isOpen: boolean }>`
   white-space: nowrap;
   overflow: hidden;
   padding-left: 1rem;
-
   opacity: ${({ $isOpen }) => ($isOpen ? 1 : 0)};
+  max-width: ${({ $isOpen }) => ($isOpen ? '23rem' : '0')};
+
+  transition:
+    opacity 0.9s ease,
+    max-width 0.9s ease;
 `;
 
 export const Line = styled.div`
@@ -159,24 +160,25 @@ export const Line = styled.div`
   background-color: ${({ theme }) => theme.cuteGrey};
 `;
 
-export const TypeMusics = styled.div`
-  width: 100%;
+export const Type = styled.div<{ $isOpen: boolean }>`
   display: flex;
   flex-direction: column;
   gap: 2rem;
   margin-top: 1rem;
-`;
-
-export const Type = styled.p<{ $isOpen: boolean }>`
   font-size: 1.8rem;
   font-weight: 300;
   color: ${({ theme }) => theme.cuteGrey};
   white-space: nowrap;
+  overflow: hidden;
 
   opacity: ${({ $isOpen }) => ($isOpen ? 1 : 0)};
   max-width: ${({ $isOpen }) => ($isOpen ? '20rem' : '0')};
 
   transition:
-    opacity ${SIDEBAR_ANIMATION},
-    max-width ${SIDEBAR_ANIMATION};
+    opacity 0.9s ease,
+    max-width 0.9s ease;
+`;
+
+export const TypeMusics = styled.div`
+  width: 100%;
 `;

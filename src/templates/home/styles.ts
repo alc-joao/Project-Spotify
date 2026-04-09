@@ -5,4 +5,5 @@ export const Home = styled.section`
   font-size: 30rem;
   background-color: blue;
   height: 100vh;
+  display: flex;
 `;

@@ -6,6 +6,7 @@ export const colors = {
   gray: '#DFDFDF',
   transparent: 'rgba(255, 255, 255, 0)',
   cuteGrey: '#B3B3B3',
+  atomicGreen: '#65D36E',
 };
 
 export default colors;
