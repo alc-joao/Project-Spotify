@@ -13,6 +13,7 @@ export const Sidebar = styled.aside<{ $isOpen: boolean }>`
   padding: 3rem 2rem;
   overflow: hidden;
   box-sizing: border-box;
+  z-index: 1;
 
   transition:
     width 0.9s ease,

@@ -2,32 +2,29 @@
 import styled from 'styled-components';
 
 export const RightSidebar = styled.div<{ $isOpen: boolean }>`
-  position: fixed;
-  right: 0;
-  top: 0;
-  z-index: 3;
-  width: ${({ $isOpen }) => ($isOpen ? '34rem' : '0')};
+  width: ${({ $isOpen }) => ($isOpen ? '34rem' : '0rem')};
   height: 100vh;
-  padding: ${({ $isOpen }) => ($isOpen ? '3rem 2rem' : '3rem 0')};
-  overflow: hidden;
   background-color: ${({ theme }) => theme.black};
-  transition:
-    width 0.4s ease,
-    padding 0.4s ease;
+  overflow: hidden;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  transition: width 0.4s ease;
+  z-index: 2;
 `;
 
 export const Wrapper = styled.div<{ $isOpen: boolean }>`
-  position: absolute;
-  width: calc(34rem - 4rem);
-  left: 2rem;
-  top: 3rem;
-  opacity: ${({ $isOpen }) => ($isOpen ? 1 : 0)};
-  transition: opacity 0.2s ease;
+  width: 34rem;
+  height: 100vh;
+  padding: 3rem 2rem;
+  box-sizing: border-box;
+  transform: ${({ $isOpen }) => ($isOpen ? 'translateX(0)' : 'translateX(50%)')};
+  transition: transform 0.4s ease;
 `;
 
 export const WrapperActions = styled.div`
   width: 100%;
   display: flex;
+  align-items: center;
   justify-content: space-between;
 `;
 
@@ -41,6 +38,7 @@ export const Title = styled.p`
 export const Actions = styled.div`
   display: flex;
   gap: 1rem;
+  flex-shrink: 0;
 `;
 
 export const IconButton = styled.button`
@@ -52,6 +50,7 @@ export const IconButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0;
 
   img {
     width: 1.8rem;
@@ -67,8 +66,8 @@ export const IconButton = styled.button`
 
 export const OpenButton = styled.button`
   position: fixed;
-  top: 2rem;
-  right: 2rem;
+  top: 7rem;
+  right: 3rem;
   width: 3.6rem;
   height: 3.6rem;
   border: none;
@@ -108,11 +107,13 @@ export const FriendBlock = styled.div`
   img:first-child {
     width: 6.2rem;
     height: 6.2rem;
+    flex-shrink: 0;
   }
 
   img:last-child {
     width: 10.2rem;
     height: auto;
+    flex-shrink: 0;
   }
 `;
 
@@ -137,9 +138,11 @@ export const BtnSettings = styled.button`
   font-weight: 600;
   letter-spacing: 0.2rem;
   background-color: ${({ theme }) => theme.white};
+  border: none;
   border-radius: 4rem;
   text-transform: uppercase;
   transition: 0.2s;
+  cursor: pointer;
 
   &:hover {
     background-color: ${({ theme }) => theme.atomicGreen};
