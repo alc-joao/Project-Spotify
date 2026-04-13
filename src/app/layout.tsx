@@ -11,6 +11,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
+      <title>Spotify</title>
+      <link rel="icon" href="/imgs/spotify.png" />
+
       <body className={fontNames}>
         <ThemeProvider theme={theme}>
           <GlobalStyles />

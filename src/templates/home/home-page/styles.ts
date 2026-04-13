@@ -5,6 +5,7 @@ export const HomePage = styled.div`
   flex: 1;
   height: 100vh;
   overflow-y: auto;
+  padding: 0 3rem;
 
   background: linear-gradient(180deg, rgba(63, 78, 219, 0.8) 0%, rgba(18, 18, 18, 1) 40%);
 `;
@@ -15,7 +16,13 @@ export const Navbar = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 3rem;
+`;
+
+export const WrapperBtnSheach = styled.div`
+  width: fit-content;
+  gap: 3rem;
+  display: flex;
+  align-items: center;
 `;
 
 export const WrapperButtons = styled.div`
@@ -45,6 +52,37 @@ export const Buttons = styled.button`
 
   &:hover {
     opacity: 60%;
+  }
+`;
+
+export const SearchLabel = styled.label`
+  width: 50rem;
+  height: 4rem;
+  border-radius: 40rem;
+  background-color: ${({ theme }) => theme.white};
+  display: flex;
+  align-items: center;
+  padding: 0 1.5rem;
+  gap: 1rem;
+`;
+
+export const SearchIcon = styled.img`
+  width: 2rem;
+  height: 2rem;
+  object-fit: contain;
+  filter: brightness(0);
+`;
+
+export const Input = styled.input`
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 1.6rem;
+  background: transparent;
+  color: ${({ theme }) => theme.black};
+
+  &::placeholder {
+    color: ${({ theme }) => theme.solidMatteGray};
   }
 `;
 
@@ -91,15 +129,13 @@ export const DropdownMenu = styled.div<{ $isOpen: boolean }>`
   right: 0;
   width: 24rem;
   height: fit-content;
-  background-color: #282828;
+  background-color: ${({ theme }) => theme.oldBlack};
   border-radius: 0.8rem;
   overflow: hidden;
   z-index: 1;
-  box-shadow: 0 0.8rem 2.4rem rgba(0, 0, 0, 0.35);
   padding: 0.6rem 0;
   display: flex;
   flex-direction: column;
-
   opacity: ${({ $isOpen }) => ($isOpen ? 1 : 0)};
   visibility: ${({ $isOpen }) => ($isOpen ? 'visible' : 'hidden')};
   transform: ${({ $isOpen }) => ($isOpen ? 'translateY(0)' : 'translateY(-1rem)')};
@@ -123,4 +159,53 @@ export const DropdownItem = styled.button<{ $isHighlighted?: boolean }>`
   &:hover {
     background-color: #3a3a3a;
   }
+`;
+
+export const Content = styled.div`
+  display: flex;
+  padding-top: 3rem;
+  flex-direction: column;
+  gap: 3rem;
+`;
+
+export const Title = styled.p`
+  font-size: 4.8rem;
+  font-weight: 500;
+  color: ${({ theme }) => theme.white};
+  margin: 0;
+`;
+
+export const Grid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+`;
+
+export const Card = styled.div`
+  display: flex;
+  height: 8rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 0.8rem;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.16);
+  }
+`;
+
+export const Cover = styled.img`
+  width: 8rem;
+  height: 8rem;
+  object-fit: cover;
+  flex-shrink: 0;
+`;
+
+export const CardText = styled.p`
+  font-size: 2rem;
+  font-weight: 500;
+  color: ${({ theme }) => theme.white};
+  margin-left: 2.4rem;
 `;
