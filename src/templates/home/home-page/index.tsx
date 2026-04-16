@@ -1,54 +1,74 @@
 'use client';
 
 import { FC } from 'react';
+import { useRouter } from 'next/navigation';
 import * as S from './styles';
 import { HomePageC as C } from './constants';
 import { useHomePageAnimation } from './animation';
+import { Navbar } from '@/components/Navbar';
+import { CarouselSection } from '@/components/CarouselSection';
 
 export const HomePage: FC = () => {
-  const { isUserMenuOpen, handleToggleUserMenu, userMenuRef, greeting } = useHomePageAnimation();
+  const { greeting } = useHomePageAnimation();
+  const router = useRouter();
+
+  const handleOpenPlaylist = (playlistId: string) => {
+    router.push(`/playlist/${playlistId}`);
+  };
+  const handleOpenRoute = (id: string) => {
+    if (id === 'home') {
+      router.push('/');
+      return;
+    }
+
+    if (id === 'search') {
+      router.push('/');
+      return;
+    }
+
+    if (id === 'your-library') {
+      router.push('/');
+      return;
+    }
+
+    router.push(`/playlist/${id}`);
+  };
 
   return (
     <S.HomePage id={C.id}>
-      <S.Navbar>
-        <S.WrapperBtnSheach>
-          <S.WrapperButtons>
-            {C.navBtns.map((item) => (
-              <S.Buttons key={item.id}>
-                <img src={item.icon} alt={item.alt} />
-              </S.Buttons>
-            ))}
-          </S.WrapperButtons>
-          <S.SearchLabel>
-            <S.SearchIcon src={C.searchBox.icon} alt="search" />
-            <S.Input placeholder={C.searchBox.placeholder} />
-          </S.SearchLabel>
-        </S.WrapperBtnSheach>
-        <S.UserMenuWrapper ref={userMenuRef}>
-          <S.UserMenu onClick={handleToggleUserMenu}>
-            <S.Avatar src={C.userMenu.avatar} alt="user" />
-            <S.Name>{C.userMenu.name}</S.Name>
-            <S.Icon src={C.userMenu.icon} alt="toggle menu" $isOpen={isUserMenuOpen} />
-          </S.UserMenu>
-          <S.DropdownMenu $isOpen={isUserMenuOpen}>
-            {C.userMenu.items.map((item, index) => (
-              <S.DropdownItem key={item.id} $isHighlighted={index === 0}>
-                {item.label}
-              </S.DropdownItem>
-            ))}
-          </S.DropdownMenu>
-        </S.UserMenuWrapper>
-      </S.Navbar>
+      <Navbar scrollContainerId={C.id} />
+
       <S.Content>
-        <S.Title>{greeting}</S.Title>
-        <S.Grid>
-          {C.playlists.map((item) => (
-            <S.Card key={item.id}>
-              <S.Cover src={item.img} alt={item.alt} />
-              <S.CardText>{item.text}</S.CardText>
-            </S.Card>
-          ))}
-        </S.Grid>
+        <S.WrapperPlaylist>
+          <S.Title>{greeting}</S.Title>
+
+          <S.Grid>
+            {C.playlists.map((item) => (
+              <S.Card key={item.id} onClick={() => handleOpenPlaylist(item.id)}>
+                <S.Cover src={item.img} alt={item.alt} />
+                <S.CardText>{item.text}</S.CardText>
+              </S.Card>
+            ))}
+          </S.Grid>
+        </S.WrapperPlaylist>
+
+        <CarouselSection
+          subtitle={C.firstSubtitle.subititle}
+          title={C.firstSubtitle.title}
+          list={C.firstCarousel}
+        />
+
+        <CarouselSection
+          subtitle={C.thirdSubtitle.subititle}
+          title={C.thirdSubtitle.title}
+          list={C.thirdCarousel}
+        />
+
+        <CarouselSection
+          subtitle={C.secondSubtitle.subititle}
+          title={C.secondSubtitle.title}
+          list={C.secondCarousel}
+        />
       </S.Content>
     </S.HomePage>
   );

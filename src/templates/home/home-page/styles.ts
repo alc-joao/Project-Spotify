@@ -1,169 +1,85 @@
 'use client';
-import styled from 'styled-components';
+
+import styled, { keyframes } from 'styled-components';
+
+const gradientA = keyframes`
+  0%, 45% {
+    opacity: 1;
+  }
+  50%, 95% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
+
+const gradientB = keyframes`
+  0%, 45% {
+    opacity: 0;
+  }
+  50%, 95% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+`;
 
 export const HomePage = styled.div`
   flex: 1;
   height: 100vh;
   overflow-y: auto;
-  padding: 0 3rem;
-
-  background: linear-gradient(180deg, rgba(63, 78, 219, 0.8) 0%, rgba(18, 18, 18, 1) 40%);
-`;
-
-export const Navbar = styled.nav`
-  width: 100%;
-  height: 7rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-export const WrapperBtnSheach = styled.div`
-  width: fit-content;
-  gap: 3rem;
-  display: flex;
-  align-items: center;
-`;
-
-export const WrapperButtons = styled.div`
-  width: 8.5rem;
-  height: auto;
-  display: flex;
-  justify-content: space-between;
-`;
-
-export const Buttons = styled.button`
-  width: 3.4rem;
-  height: 3.4rem;
-  border: none;
-  border-radius: 50%;
-  background-color: ${({ theme }) => theme.black};
-  opacity: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: 0.2s;
-
-  img {
-    width: 1.4rem;
-    height: 2rem;
-  }
-
-  &:hover {
-    opacity: 60%;
-  }
-`;
-
-export const SearchLabel = styled.label`
-  width: 50rem;
-  height: 4rem;
-  border-radius: 40rem;
-  background-color: ${({ theme }) => theme.white};
-  display: flex;
-  align-items: center;
-  padding: 0 1.5rem;
-  gap: 1rem;
-`;
-
-export const SearchIcon = styled.img`
-  width: 2rem;
-  height: 2rem;
-  object-fit: contain;
-  filter: brightness(0);
-`;
-
-export const Input = styled.input`
-  flex: 1;
-  border: none;
-  outline: none;
-  font-size: 1.6rem;
-  background: transparent;
-  color: ${({ theme }) => theme.black};
-
-  &::placeholder {
-    color: ${({ theme }) => theme.solidMatteGray};
-  }
-`;
-
-export const UserMenuWrapper = styled.div`
   position: relative;
-`;
+  isolation: isolate;
+  background: #121212;
 
-export const UserMenu = styled.div`
-  width: 13.5rem;
-  height: 3.8rem;
-  background-color: ${({ theme }) => theme.black};
-  border-radius: 4rem;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  cursor: pointer;
-  position: relative;
-  z-index: 2;
-`;
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
 
-export const Avatar = styled.img`
-  width: 3.4rem;
-  height: 3.4rem;
-  border-radius: 50%;
-`;
+  &::before {
+    background: linear-gradient(
+      180deg,
+      rgba(74, 168, 232, 0.95) 0%,
+      rgba(74, 168, 232, 0.45) 20%,
+      rgba(18, 18, 18, 0.08) 42%,
+      rgba(18, 18, 18, 0) 60%
+    );
+    animation: ${gradientA} 10s ease-in-out infinite;
+  }
 
-export const Name = styled.p`
-  font-size: 1.5rem;
-  font-weight: 500;
-  color: ${({ theme }) => theme.white};
-`;
+  &::after {
+    background: linear-gradient(
+      180deg,
+      rgba(109, 93, 252, 0.95) 0%,
+      rgba(109, 93, 252, 0.45) 20%,
+      rgba(18, 18, 18, 0.08) 42%,
+      rgba(18, 18, 18, 0) 60%
+    );
+    animation: ${gradientB} 10s ease-in-out infinite;
+  }
 
-export const Icon = styled.img<{ $isOpen: boolean }>`
-  width: 1.5rem;
-  height: 1.5rem;
-  margin-right: 1rem;
-  transition: transform 0.3s ease;
-  transform: ${({ $isOpen }) => ($isOpen ? 'rotate(180deg)' : 'rotate(0deg)')};
-`;
-
-export const DropdownMenu = styled.div<{ $isOpen: boolean }>`
-  position: absolute;
-  top: 5rem;
-  right: 0;
-  width: 24rem;
-  height: fit-content;
-  background-color: ${({ theme }) => theme.oldBlack};
-  border-radius: 0.8rem;
-  overflow: hidden;
-  z-index: 1;
-  padding: 0.6rem 0;
-  display: flex;
-  flex-direction: column;
-  opacity: ${({ $isOpen }) => ($isOpen ? 1 : 0)};
-  visibility: ${({ $isOpen }) => ($isOpen ? 'visible' : 'hidden')};
-  transform: ${({ $isOpen }) => ($isOpen ? 'translateY(0)' : 'translateY(-1rem)')};
-  transition:
-    opacity 0.25s ease,
-    transform 0.25s ease,
-    visibility 0.25s ease;
-`;
-
-export const DropdownItem = styled.button<{ $isHighlighted?: boolean }>`
-  width: 100%;
-  min-height: 5.6rem;
-  padding: 0 2.4rem;
-  border: none;
-  color: white;
-  font-size: 1.7rem;
-  text-align: left;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-
-  &:hover {
-    background-color: #3a3a3a;
+  > * {
+    position: relative;
+    z-index: 1;
   }
 `;
 
 export const Content = styled.div`
+  width: 100%;
+  /* max-width: 1800px; */
+  margin: 0 auto;
+  padding: 3rem;
+`;
+
+export const WrapperPlaylist = styled.div`
   display: flex;
-  padding-top: 3rem;
   flex-direction: column;
   gap: 3rem;
 `;
@@ -181,15 +97,15 @@ export const Grid = styled.div`
   gap: 2rem;
 `;
 
-export const Card = styled.div`
+export const Card = styled.a`
   display: flex;
   height: 8rem;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 0.8rem;
-  display: flex;
   align-items: center;
   overflow: hidden;
   cursor: pointer;
+  transition: background 0.2s ease;
 
   &:hover {
     background: rgba(255, 255, 255, 0.16);

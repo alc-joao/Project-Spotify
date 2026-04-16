@@ -1,16 +1,10 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { HomePageC as C } from './constants';
 
 export const useHomePageAnimation = () => {
-  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [greeting, setGreeting] = useState('');
-  const userMenuRef = useRef<HTMLDivElement>(null);
-
-  const handleToggleUserMenu = () => {
-    setIsUserMenuOpen((prevState) => !prevState);
-  };
 
   const handleGreeting = () => {
     const hour = new Date().getHours();
@@ -40,24 +34,7 @@ export const useHomePageAnimation = () => {
     };
   }, []);
 
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (userMenuRef.current && !userMenuRef.current.contains(event.target as Node)) {
-        setIsUserMenuOpen(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
-
   return {
-    isUserMenuOpen,
-    handleToggleUserMenu,
-    userMenuRef,
     greeting,
   };
 };

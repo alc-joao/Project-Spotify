@@ -1,14 +1,35 @@
 'use client';
 
 import { FC, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import * as S from './styles';
 import { SidebarC as C } from './constants';
 
 export const Sidebar: FC = () => {
   const [isOpen, setIsOpen] = useState(true);
+  const router = useRouter();
 
   const handleToggleSidebar = () => {
     setIsOpen((prevState) => !prevState);
+  };
+
+  const handleOpenRoute = (id: string) => {
+    if (id === 'home') {
+      router.push('/');
+      return;
+    }
+
+    if (id === 'search') {
+      router.push('/');
+      return;
+    }
+
+    if (id === 'your-library') {
+      router.push('/');
+      return;
+    }
+
+    router.push(`/playlist/${id}`);
   };
 
   return (
@@ -26,7 +47,12 @@ export const Sidebar: FC = () => {
 
       <S.SidebarItens>
         {C.menuItems.map((item) => (
-          <S.SidebarNavItem key={item.id} $active={item.active} $isOpen={isOpen}>
+          <S.SidebarNavItem
+            key={item.id}
+            $active={item.active}
+            $isOpen={isOpen}
+            onClick={() => handleOpenRoute(item.id)}
+          >
             <S.SidebarIcon src={item.icon} alt={item.label} $active={item.active} />
             <S.SidebarLabel $isOpen={isOpen}>{item.label}</S.SidebarLabel>
           </S.SidebarNavItem>
@@ -35,7 +61,7 @@ export const Sidebar: FC = () => {
 
       <S.Library>
         {C.libraryItems.map((item) => (
-          <S.LibraryItem key={item.id} $type={item.type}>
+          <S.LibraryItem key={item.id} $type={item.type} onClick={() => handleOpenRoute(item.id)}>
             <S.LibraryAlbum src={item.icon} alt={item.label} $type={item.type} />
             <S.LibraryLabel $isOpen={isOpen}>{item.label}</S.LibraryLabel>
           </S.LibraryItem>

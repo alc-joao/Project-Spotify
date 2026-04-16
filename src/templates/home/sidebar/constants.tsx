@@ -41,14 +41,14 @@ export const SidebarC = {
       type: 'album',
     },
     {
-      id: 'caro vapor II',
+      id: 'carovaporII',
       label: 'Caro Vapor II',
       icon: '/imgs/sidebar/CVII.jpeg',
       type: 'album',
     },
     {
       id: 'xtranho',
-      label: 'Xtranho',
+      label: 'XTRANHO',
       icon: '/imgs/sidebar/xtranho.jpeg',
       type: 'album',
     },
