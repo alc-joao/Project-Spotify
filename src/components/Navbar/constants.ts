@@ -13,8 +13,9 @@ export const NavbarC = {
   ],
 
   searchBox: {
-    placeholder: 'What do you want play?',
     icon: '/svgs/sidebar/search.svg',
+    alt: 'search',
+    placeholder: 'What do you want to play?',
   },
 
   userMenu: {

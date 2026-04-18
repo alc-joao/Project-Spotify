@@ -6,30 +6,28 @@ export const SidebarC = {
       id: 'home',
       label: 'Home',
       icon: '/svgs/sidebar/home.svg',
-      active: true,
     },
     {
       id: 'search',
       label: 'Search',
       icon: '/svgs/sidebar/search.svg',
-      active: false,
     },
     {
       id: 'library',
       label: 'Your Library',
       icon: '/svgs/sidebar/library.svg',
-      active: false,
     },
   ],
+
   libraryItems: [
     {
-      id: 'create playlist',
+      id: 'create-playlist',
       label: 'Create Playlist',
       icon: '/svgs/sidebar/Subtract.svg',
       type: 'action',
     },
     {
-      id: 'liked songs',
+      id: 'liked-songs',
       label: 'Liked Songs',
       icon: '/svgs/sidebar/liked-songs.svg',
       type: 'liked',
@@ -53,12 +51,13 @@ export const SidebarC = {
       type: 'album',
     },
     {
-      id: '100% CBJR',
+      id: 'cemporcentocbjr',
       label: '100% Charlie Brown JR',
       icon: '/imgs/sidebar/CB.jpg',
       type: 'album',
     },
   ],
+
   typeMusics: [
     {
       key: 0,

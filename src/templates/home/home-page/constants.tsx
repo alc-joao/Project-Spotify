@@ -58,7 +58,7 @@ export const HomePageC = {
   },
   playlists: [
     {
-      id: 'liked songs',
+      id: 'liked-songs',
       text: 'Liked Songs',
       img: '/svgs/sidebar/liked-songs.svg',
       alt: 'Liked Songs',
@@ -73,7 +73,7 @@ export const HomePageC = {
       id: 'carovaporII',
       text: 'Caro Vapor II',
       img: '/imgs/sidebar/CVII.jpeg',
-      alt: 'caro vapor',
+      alt: 'Caro Vapor II',
     },
     {
       id: 'xtranho',
@@ -82,7 +82,7 @@ export const HomePageC = {
       alt: 'Xtranho',
     },
     {
-      id: '100%cbjr',
+      id: 'cemporcentocbjr',
       text: '100% Charlie Brown Jr',
       img: '/imgs/sidebar/CB.jpg',
       alt: '100% Charlie Brown Jr',
@@ -106,7 +106,7 @@ export const HomePageC = {
       alt: '333',
     },
     {
-      id: 'colapso global',
+      id: 'colapso-global',
       text: 'COLAPSO GLOBAL',
       img: '/imgs/home-page/colapso-global.jpeg',
       alt: 'Colapso Global',
@@ -122,56 +122,56 @@ export const HomePageC = {
       alt: 'Img Album Xtranho',
       img: '/imgs/sidebar/xtranho.jpeg',
       textCard: 'XTRANHO',
-      descripition: 'Matuê, King of Brasilian Trap, Fuck the American',
+      descripition: 'Matuê, King of Brasilian Trap',
     },
     {
       id: 'bully',
       alt: 'Img Album Bully',
-      img: 'imgs/home-page/Bully.jpg',
+      img: '/imgs/home-page/Bully.jpg',
       textCard: 'Bully',
-      descripition: 'Kanye West - YE, The greatest of all time',
+      descripition: 'Kanye West',
     },
     {
-      id: 'Caro Vapor',
+      id: 'carovaporII', // 🔥 corrigido
       alt: 'Img Album CVII',
       img: '/imgs/sidebar/CVII.jpeg',
       textCard: 'Caro Vapor II',
-      descripition: 'Don L, Idol of your idol, Last bad guy',
+      descripition: 'Don L',
     },
     {
       id: 'zero',
       alt: 'Img Album Zero',
-      img: 'imgs/home-page/zero.jpeg',
+      img: '/imgs/home-page/zero.jpeg',
       textCard: 'ZERO',
-      descripition: 'Yung Buda, The king of underground sound',
+      descripition: 'Yung Buda',
     },
     {
-      id: 'cbjr',
-      alt: 'Img Album 100%cbjr',
+      id: 'cemporcentocbjr', // 🔥 corrigido
+      alt: 'Img Album CBJR',
       img: '/imgs/sidebar/CB.jpg',
       textCard: '100% Charlie Brown JR',
-      descripition: 'CBJR, Forever!',
+      descripition: 'CBJR',
     },
     {
       id: 'hasos',
       alt: 'Img Album hasos',
       img: '/imgs/sidebar/hasos.jpg',
       textCard: 'Hasos',
-      descripition: 'Only understand those who pass by',
+      descripition: 'Baco Exu do Blues',
     },
     {
-      id: 'colapso global',
+      id: 'colapso-global', // 🔥 corrigido
       alt: 'Img Album Colapso Global',
       img: '/imgs/home-page/colapso-global.jpeg',
       textCard: 'COLAPSO GLOBAL',
-      descripition: 'Theres nothing to talk about 30PRAUM',
+      descripition: 'Teto, WIU',
     },
     {
       id: '333',
       alt: 'Img Album 333',
       img: '/imgs/home-page/333.jpeg',
       textCard: '333',
-      descripition: 'Balance, Self-knowledge, Evolution.',
+      descripition: 'Matuê',
     },
   ],
   secondSubtitle: {

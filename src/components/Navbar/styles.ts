@@ -132,7 +132,7 @@ export const DropdownMenu = styled.div<{ $isOpen: boolean }>`
   background-color: ${({ theme }) => theme.oldBlack};
   border-radius: 0.8rem;
   overflow: hidden;
-  z-index: 1;
+  z-index: 2;
   padding: 0.6rem 0;
   display: flex;
   flex-direction: column;

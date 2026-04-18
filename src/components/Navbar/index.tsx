@@ -1,7 +1,7 @@
 'use client';
 
 import { FC } from 'react';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import * as S from './styles';
 import { NavbarC as C } from './constants';
 import { useNavbarAnimation } from './animation';
@@ -12,6 +12,7 @@ type NavbarProps = {
 
 export const Navbar: FC<NavbarProps> = ({ scrollContainerId }) => {
   const router = useRouter();
+  const pathname = usePathname();
 
   const { isUserMenuOpen, scrollOpacity, handleToggleUserMenu, userMenuRef } =
     useNavbarAnimation(scrollContainerId);
@@ -27,6 +28,12 @@ export const Navbar: FC<NavbarProps> = ({ scrollContainerId }) => {
     }
   };
 
+  const handleGoToSearch = () => {
+    if (pathname !== '/search') {
+      router.push('/search');
+    }
+  };
+
   return (
     <S.Navbar $scrollOpacity={scrollOpacity}>
       <S.WrapperBtnSheach>
@@ -38,9 +45,13 @@ export const Navbar: FC<NavbarProps> = ({ scrollContainerId }) => {
           ))}
         </S.WrapperButtons>
 
-        <S.SearchLabel>
-          <S.SearchIcon src={C.searchBox.icon} alt="search" />
-          <S.Input placeholder={C.searchBox.placeholder} />
+        <S.SearchLabel onClick={handleGoToSearch}>
+          <S.SearchIcon src={C.searchBox.icon} alt={C.searchBox.alt} />
+          <S.Input
+            placeholder={C.searchBox.placeholder}
+            onFocus={handleGoToSearch}
+            readOnly={pathname !== '/search'}
+          />
         </S.SearchLabel>
       </S.WrapperBtnSheach>
 

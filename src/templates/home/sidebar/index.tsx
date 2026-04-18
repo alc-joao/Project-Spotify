@@ -1,13 +1,14 @@
 'use client';
 
 import { FC, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import * as S from './styles';
 import { SidebarC as C } from './constants';
 
 export const Sidebar: FC = () => {
   const [isOpen, setIsOpen] = useState(true);
   const router = useRouter();
+  const pathname = usePathname();
 
   const handleToggleSidebar = () => {
     setIsOpen((prevState) => !prevState);
@@ -20,16 +21,32 @@ export const Sidebar: FC = () => {
     }
 
     if (id === 'search') {
-      router.push('/');
+      router.push('/search');
       return;
     }
 
-    if (id === 'your-library') {
+    if (id === 'library') {
       router.push('/');
       return;
     }
 
     router.push(`/playlist/${id}`);
+  };
+
+  const isMenuItemActive = (id: string) => {
+    if (id === 'home') {
+      return pathname === '/';
+    }
+
+    if (id === 'search') {
+      return pathname === '/search';
+    }
+
+    if (id === 'library') {
+      return pathname === '/library';
+    }
+
+    return false;
   };
 
   return (
@@ -49,11 +66,11 @@ export const Sidebar: FC = () => {
         {C.menuItems.map((item) => (
           <S.SidebarNavItem
             key={item.id}
-            $active={item.active}
+            $active={isMenuItemActive(item.id)}
             $isOpen={isOpen}
             onClick={() => handleOpenRoute(item.id)}
           >
-            <S.SidebarIcon src={item.icon} alt={item.label} $active={item.active} />
+            <S.SidebarIcon src={item.icon} alt={item.label} $active={isMenuItemActive(item.id)} />
             <S.SidebarLabel $isOpen={isOpen}>{item.label}</S.SidebarLabel>
           </S.SidebarNavItem>
         ))}
@@ -72,7 +89,7 @@ export const Sidebar: FC = () => {
 
       <S.Type $isOpen={isOpen}>
         {C.typeMusics.map((item) => (
-          <S.TypeMusics key={item.name}>{item.name}</S.TypeMusics>
+          <S.TypeMusics key={item.key}>{item.name}</S.TypeMusics>
         ))}
       </S.Type>
     </S.Sidebar>

@@ -5,7 +5,7 @@ import { ThemeProvider } from 'styled-components';
 import GlobalStyles from '@/styles/global';
 import { fontNames } from '@/styles/_fonts';
 import { Sidebar } from '@/templates/home/sidebar';
-import { RightSidebar } from '@/templates/home/rigth-sidebar';
+import { RightSidebar } from '@/templates/home/right-sidebar';
 import * as S from './styles';
 
 export default function RootLayout({

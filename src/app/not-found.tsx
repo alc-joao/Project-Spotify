@@ -7,11 +7,12 @@ export default function NotFound() {
   return (
     <S.Wrapper>
       <S.Content>
-        <S.Code>404</S.Code>
+        <S.Code src="/imgs/spotify.png" alt="spotify"></S.Code>
         <S.Title>Página não encontrada</S.Title>
-        <S.Description>O conteúdo que você tentou acessar não existe ou foi movido.</S.Description>
+        <S.Description>Não encontramos a página que você queria.</S.Description>
 
-        <S.HomeLink href="/">BACK TO HOME</S.HomeLink>
+        <S.HomeLink href="/">Ínicio</S.HomeLink>
+        <S.HelpLink href="/">Ajuda</S.HelpLink>
       </S.Content>
     </S.Wrapper>
   );

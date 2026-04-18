@@ -54,7 +54,7 @@ export const Subtitle = styled.p`
 
 export const Title = styled.h1`
   margin: 0;
-  font-size: 9.6rem;
+  font-size: 7rem;
   line-height: 0.9;
   font-weight: 700;
   color: ${({ theme }) => theme.white};

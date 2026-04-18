@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import { playlistsData } from '@/data/playlists';
-import { PlaylistPage } from '@/templates/PlaylistPage';
+import { PlaylistPage } from '@/templates/playlist-page';
 
 type PageProps = {
   params: {
