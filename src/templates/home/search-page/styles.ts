@@ -77,7 +77,7 @@ export const Input = styled.input`
 `;
 
 export const Content = styled.div`
-  padding: 2.4rem;
+  padding: 3rem 3rem 12rem 3rem;
   display: flex;
   flex-direction: column;
   gap: 4rem;

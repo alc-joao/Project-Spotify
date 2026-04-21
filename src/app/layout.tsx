@@ -6,6 +6,7 @@ import GlobalStyles from '@/styles/global';
 import { fontNames } from '@/styles/_fonts';
 import { Sidebar } from '@/templates/home/sidebar';
 import { RightSidebar } from '@/templates/home/right-sidebar';
+import { PlayerBar } from '@/components/Playerbar';
 import * as S from './styles';
 
 export default function RootLayout({
@@ -29,6 +30,8 @@ export default function RootLayout({
             <S.MainContent>{children}</S.MainContent>
             <RightSidebar />
           </S.AppShell>
+
+          <PlayerBar />
         </ThemeProvider>
       </body>
     </html>

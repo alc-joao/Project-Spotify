@@ -17,7 +17,7 @@ export const PlaylistPage = styled.div<{ $bgColor: string }>`
 `;
 
 export const Content = styled.div`
-  padding: 0 3rem 3rem 3rem;
+  padding: 0 3rem 12rem 3rem;
 `;
 
 export const Header = styled.div`

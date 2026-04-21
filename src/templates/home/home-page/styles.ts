@@ -75,7 +75,7 @@ export const Content = styled.div`
   width: 100%;
   /* max-width: 1800px; */
   margin: 0 auto;
-  padding: 3rem;
+  padding: 3rem 3rem 12rem 3rem;
 `;
 
 export const WrapperPlaylist = styled.div`
