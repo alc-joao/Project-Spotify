@@ -102,7 +102,7 @@ export const TableHeader = styled.div`
 
 export const Row = styled.div`
   display: grid;
-  grid-template-columns: 5rem 2.4fr 8rem;
+  grid-template-columns: 5rem 2.4fr 4rem 8rem;
   align-items: center;
   padding: 1rem 1.6rem;
   border-radius: 0.6rem;

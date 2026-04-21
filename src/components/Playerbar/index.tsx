@@ -1,35 +1,22 @@
 'use client';
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import * as S from './styles';
 import { PlayerBarC as C } from './constants';
+import { usePlayerBarAnimation } from './animation';
+import { LikeButton } from '@/components/LikeButton';
 
 export const PlayerBar: FC = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
-
-  const handleClick = (id: string) => {
-    if (id === 'toggle-play') {
-      setIsPlaying((prevState) => !prevState);
-      return;
-    }
-  };
+  const { isPlaying, volume, handlePlayerAction, handleVolumeChange } = usePlayerBarAnimation();
 
   return (
     <S.PlayerBar>
       <S.Left>
         <S.Cover src={C.music.cover} alt={C.music.title} />
-
         <S.MusicInfo>
           <S.Title>{C.music.title}</S.Title>
           <S.Artist>{C.music.artist}</S.Artist>
         </S.MusicInfo>
-
-        <S.LeftActions>
-          {C.leftActions.map((item) => (
-            <S.IconButton key={item.id} type="button" onClick={() => handleClick(item.id)}>
-              <img src={item.icon} alt={item.alt} />
-            </S.IconButton>
-          ))}
-        </S.LeftActions>
+        <LikeButton musicId={C.music.id} />
       </S.Left>
 
       <S.Center>
@@ -41,7 +28,7 @@ export const PlayerBar: FC = () => {
               <S.ControlButton
                 key={item.id}
                 type="button"
-                onClick={() => handleClick(item.id)}
+                onClick={() => handlePlayerAction(item.id)}
                 $isMain={isMainButton}
                 $active={item.active}
               >
@@ -73,16 +60,34 @@ export const PlayerBar: FC = () => {
 
       <S.Right>
         <S.RightActions>
-          {C.rightActions.map((item) => (
-            <S.IconButton key={item.id} type="button" onClick={() => handleClick(item.id)}>
-              <img src={item.icon} alt={item.alt} />
-            </S.IconButton>
-          ))}
-        </S.RightActions>
+          {C.rightActions.map((item) => {
+            if (item.id === 'volume') {
+              return (
+                <S.VolumeControl key={item.id}>
+                  <S.IconButton type="button" onClick={() => handlePlayerAction(item.id)}>
+                    <img src={item.icon} alt={item.alt} />
+                  </S.IconButton>
 
-        <S.VolumeBar>
-          <S.VolumeProgress />
-        </S.VolumeBar>
+                  <S.VolumeInput
+                    type="range"
+                    min="0"
+                    max="100"
+                    step="1"
+                    value={volume}
+                    onChange={handleVolumeChange}
+                    $volume={volume}
+                  />
+                </S.VolumeControl>
+              );
+            }
+
+            return (
+              <S.IconButton key={item.id} type="button" onClick={() => handlePlayerAction(item.id)}>
+                <img src={item.icon} alt={item.alt} />
+              </S.IconButton>
+            );
+          })}
+        </S.RightActions>
       </S.Right>
     </S.PlayerBar>
   );

@@ -1,5 +1,6 @@
 export const PlayerBarC = {
   music: {
+    id: 'test-music',
     title: 'Test Music',
     artist: 'Test Artist',
     cover: '/imgs/spotify.png',
@@ -8,7 +9,8 @@ export const PlayerBarC = {
   leftActions: [
     {
       id: 'favorite',
-      icon: '/svgs/playerbar/heart.svg',
+      icon: '/svgs/playerbar/plus.svg',
+      activeIcon: '/svgs/playerbar/check.svg',
       alt: 'favorite',
     },
   ],
@@ -20,9 +22,9 @@ export const PlayerBarC = {
       alt: 'shuffle',
     },
     {
-      id: 'next',
-      icon: '/svgs/playerbar/next.svg',
-      alt: 'next',
+      id: 'previous',
+      icon: '/svgs/playerbar/previous.svg',
+      alt: 'previous',
     },
     {
       id: 'toggle-play',
@@ -31,9 +33,9 @@ export const PlayerBarC = {
       active: true,
     },
     {
-      id: 'previous',
-      icon: '/svgs/playerbar/previous.svg',
-      alt: 'previous',
+      id: 'next',
+      icon: '/svgs/playerbar/next.svg',
+      alt: 'next',
     },
     {
       id: 'repeat',

@@ -3,6 +3,7 @@
 import { FC } from 'react';
 import * as S from './styles';
 import { Navbar } from '@/components/Navbar';
+import { LikeButton } from '@/components/LikeButton';
 
 type Song = {
   id: string;
@@ -65,7 +66,7 @@ export const PlaylistPage: FC<Props> = ({ playlist }) => {
                   <S.SongArtist>{song.artist}</S.SongArtist>
                 </S.SongText>
               </S.SongInfo>
-
+              <LikeButton musicId={song.id} />
               <S.Duration>{song.duration}</S.Duration>
             </S.Row>
           ))}

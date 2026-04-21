@@ -1,5 +1,4 @@
 'use client';
-
 import styled from 'styled-components';
 
 export const PlayerBar = styled.footer`
@@ -15,7 +14,7 @@ export const PlayerBar = styled.footer`
   justify-content: space-between;
   background: #121212;
   border-top: 1px solid #282828;
-  z-index: 9999;
+  z-index: 3;
 `;
 
 export const Left = styled.div`
@@ -162,7 +161,6 @@ export const Right = styled.div`
   width: 30%;
   min-width: 0;
   height: 100%;
-
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -194,33 +192,74 @@ export const IconButton = styled.button`
   }
 
   img {
-    width: 1.7rem;
-    height: 1.7rem;
+    width: 2.7rem;
+    height: 2.7rem;
     object-fit: contain;
-    opacity: 0.75;
+    opacity: 0.95;
     transition:
       opacity 0.2s ease,
-      filter 0.2s ease;
+      transform 0.2s ease;
   }
 
   &:hover img {
     opacity: 1;
-    filter: brightness(0) invert(1);
+    transform: scale(1.05);
   }
 `;
 
-export const VolumeBar = styled.div`
-  width: 9.5rem;
-  height: 0.4rem;
-  border-radius: 999rem;
-  background: #4d4d4d;
-  overflow: hidden;
-  flex-shrink: 0;
+export const VolumeControl = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
 `;
 
-export const VolumeProgress = styled.div`
-  width: 75%;
-  height: 100%;
-  background: ${({ theme }) => theme.white};
-  border-radius: 999rem;
+export const VolumeInput = styled.input<{ $volume: number }>`
+  width: 9.5rem;
+  height: 1.2rem;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  flex-shrink: 0;
+
+  &::-webkit-slider-runnable-track {
+    height: 0.4rem;
+    border-radius: 999rem;
+    background: linear-gradient(
+      to right,
+      ${({ theme }) => theme.white} 0%,
+      ${({ theme }) => theme.white} ${({ $volume }) => $volume}%,
+      #4d4d4d ${({ $volume }) => $volume}%,
+      #4d4d4d 100%
+    );
+  }
+
+  &::-webkit-slider-thumb {
+    appearance: none;
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-top: -0.4rem;
+    border: none;
+    border-radius: 50%;
+    background: ${({ theme }) => theme.white};
+  }
+
+  &::-moz-range-track {
+    height: 0.4rem;
+    border-radius: 999rem;
+    background: #4d4d4d;
+  }
+
+  &::-moz-range-progress {
+    height: 0.4rem;
+    border-radius: 999rem;
+    background: ${({ theme }) => theme.white};
+  }
+
+  &::-moz-range-thumb {
+    width: 1.2rem;
+    height: 1.2rem;
+    border: none;
+    border-radius: 50%;
+    background: ${({ theme }) => theme.white};
+  }
 `;
