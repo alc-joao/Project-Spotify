@@ -1,3 +1,188 @@
+// 'use client';
+
+// import styled from 'styled-components';
+
+// export const Sidebar = styled.aside<{ $isOpen: boolean }>`
+//   background-color: ${({ theme }) => theme.black};
+//   width: ${({ $isOpen }) => ($isOpen ? '34rem' : '11rem')};
+//   height: 100vh;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: flex-start;
+//   gap: 3rem;
+//   padding: 3rem 2rem;
+//   overflow: hidden;
+//   box-sizing: border-box;
+//   z-index: 1;
+
+//   transition:
+//     width 0.9s ease,
+//     padding 0.9s ease;
+// `;
+
+// export const SidebarTop = styled.div<{ $isOpen: boolean }>`
+//   width: 100%;
+//   display: flex;
+//   align-items: center;
+//   flex-shrink: 0;
+// `;
+
+// export const ToggleButton = styled.button`
+//   width: 4.8rem;
+//   height: 4.8rem;
+//   border: none;
+//   border-radius: 0.8rem;
+//   background: transparent;
+//   color: ${({ theme }) => theme.white};
+//   cursor: pointer;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   padding: 0;
+//   transition: background-color 0.9s ease;
+
+//   &:hover {
+//     background-color: rgba(255, 255, 255, 0.08);
+//   }
+// `;
+
+// export const ToggleIcon = styled.img`
+//   width: 2.4rem;
+//   height: 2.4rem;
+//   object-fit: contain;
+//   filter: brightness(0) invert(1);
+// `;
+
+// export const SidebarItens = styled.div`
+//   width: 100%;
+//   display: flex;
+//   flex-direction: column;
+//   gap: 2.4rem;
+//   margin-top: 1rem;
+//   flex: 0 0 auto;
+// `;
+
+// export const SidebarNavItem = styled.div<{ $active?: boolean; $isOpen: boolean }>`
+//   width: 100%;
+//   display: flex;
+//   align-items: center;
+//   justify-content: ${({ $isOpen }) => ($isOpen ? 'flex-start' : 'center')};
+//   gap: ${({ $isOpen }) => ($isOpen ? '2rem' : '0')};
+//   cursor: pointer;
+//   color: ${({ $active, theme }) => ($active ? theme.white : theme.cuteGrey)};
+//   transition:
+//     color 0.9s ease,
+//     gap 0.9s ease;
+
+//   &:hover {
+//     color: ${({ theme }) => theme.white};
+//   }
+
+//   &:hover img {
+//     filter: brightness(0) invert(1);
+//   }
+// `;
+
+// export const SidebarIcon = styled.img<{ $active?: boolean }>`
+//   width: 3.2rem;
+//   height: 3.2rem;
+//   flex-shrink: 0;
+//   transition: filter 0.9s ease;
+//   filter: ${({ $active }) => ($active ? 'brightness(0) invert(1)' : 'brightness(0) invert(0.7)')};
+// `;
+
+// export const SidebarLabel = styled.span<{ $isOpen: boolean }>`
+//   font-size: 1.8rem;
+//   font-weight: 700;
+//   line-height: 1;
+//   white-space: nowrap;
+//   overflow: hidden;
+//   opacity: ${({ $isOpen }) => ($isOpen ? 1 : 0)};
+//   max-width: ${({ $isOpen }) => ($isOpen ? '20rem' : '0')};
+
+//   transition:
+//     opacity 0.9s ease,
+//     max-width 0.9s ease;
+// `;
+
+// export const Library = styled.div`
+//   width: 100%;
+//   display: flex;
+//   flex-direction: column;
+//   gap: 2rem;
+//   margin-top: 1rem;
+//   flex: 0 0 auto;
+// `;
+
+// export const LibraryItem = styled.div<{ $type?: string }>`
+//   width: 100%;
+//   display: flex;
+//   align-items: center;
+//   cursor: pointer;
+//   color: ${({ $type, theme }) => ($type === 'action' ? theme.cuteGrey : theme.white)};
+//   transition: color 0.9s ease;
+
+//   &:hover {
+//     color: ${({ theme }) => theme.white};
+//   }
+// `;
+
+// export const LibraryAlbum = styled.img<{ $type?: string }>`
+//   width: 7rem;
+//   height: 7rem;
+//   flex-shrink: 0;
+//   border-radius: 0.5rem;
+
+//   ${({ $type }) =>
+//     $type === 'action' &&
+//     `
+//       filter: brightness(0) invert(0.7);
+//     `}
+// `;
+
+// export const LibraryLabel = styled.span<{ $isOpen: boolean }>`
+//   font-size: 1.8rem;
+//   font-weight: 600;
+//   line-height: 1;
+//   white-space: nowrap;
+//   overflow: hidden;
+//   padding-left: 1rem;
+//   opacity: ${({ $isOpen }) => ($isOpen ? 1 : 0)};
+//   max-width: ${({ $isOpen }) => ($isOpen ? '23rem' : '0')};
+
+//   transition:
+//     opacity 0.9s ease,
+//     max-width 0.9s ease;
+// `;
+
+// export const Line = styled.div`
+//   width: 100%;
+//   height: 0.01rem;
+//   background-color: ${({ theme }) => theme.cuteGrey};
+// `;
+
+// export const Type = styled.div<{ $isOpen: boolean }>`
+//   display: flex;
+//   flex-direction: column;
+//   gap: 2rem;
+//   margin-top: 1rem;
+//   font-size: 1.8rem;
+//   font-weight: 300;
+//   color: ${({ theme }) => theme.cuteGrey};
+//   white-space: nowrap;
+//   overflow: hidden;
+
+//   opacity: ${({ $isOpen }) => ($isOpen ? 1 : 0)};
+//   max-width: ${({ $isOpen }) => ($isOpen ? '20rem' : '0')};
+
+//   transition:
+//     opacity 0.9s ease,
+//     max-width 0.9s ease;
+// `;
+
+// export const TypeMusics = styled.div`
+//   width: 100%;
+// `;
 'use client';
 
 import styled from 'styled-components';
@@ -11,7 +196,8 @@ export const Sidebar = styled.aside<{ $isOpen: boolean }>`
   justify-content: flex-start;
   gap: 3rem;
   padding: 3rem 2rem;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
   box-sizing: border-box;
   z-index: 1;
 
@@ -62,7 +248,7 @@ export const SidebarItens = styled.div`
   flex: 0 0 auto;
 `;
 
-export const SidebarNavItem = styled.div<{ $active?: boolean; $isOpen: boolean }>`
+export const SidebarNavItem = styled.button<{ $active?: boolean; $isOpen: boolean }>`
   width: 100%;
   display: flex;
   align-items: center;
@@ -70,6 +256,9 @@ export const SidebarNavItem = styled.div<{ $active?: boolean; $isOpen: boolean }
   gap: ${({ $isOpen }) => ($isOpen ? '2rem' : '0')};
   cursor: pointer;
   color: ${({ $active, theme }) => ($active ? theme.white : theme.cuteGrey)};
+  background: transparent;
+  border: none;
+  padding: 0;
   transition:
     color 0.9s ease,
     gap 0.9s ease;
@@ -114,16 +303,24 @@ export const Library = styled.div`
   flex: 0 0 auto;
 `;
 
-export const LibraryItem = styled.div<{ $type?: string }>`
+export const LibraryItem = styled.button<{ $type?: string; $active?: boolean }>`
   width: 100%;
   display: flex;
   align-items: center;
   cursor: pointer;
+  border: none;
+  text-align: left;
+  padding: 0.8rem;
+  border-radius: 0.8rem;
+  background: ${({ $active }) => ($active ? 'rgba(255, 255, 255, 0.08)' : 'transparent')};
   color: ${({ $type, theme }) => ($type === 'action' ? theme.cuteGrey : theme.white)};
-  transition: color 0.9s ease;
+  transition:
+    color 0.9s ease,
+    background-color 0.3s ease;
 
   &:hover {
     color: ${({ theme }) => theme.white};
+    background: rgba(255, 255, 255, 0.08);
   }
 `;
 
@@ -132,6 +329,7 @@ export const LibraryAlbum = styled.img<{ $type?: string }>`
   height: 7rem;
   flex-shrink: 0;
   border-radius: 0.5rem;
+  object-fit: cover;
 
   ${({ $type }) =>
     $type === 'action' &&
@@ -182,4 +380,30 @@ export const Type = styled.div<{ $isOpen: boolean }>`
 
 export const TypeMusics = styled.div`
   width: 100%;
+`;
+
+export const PlaylistRow = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+`;
+
+export const PlaylistActions = styled.div`
+  display: flex;
+  gap: 0.8rem;
+  padding-left: 0.8rem;
+`;
+
+export const ActionButton = styled.button`
+  border: none;
+  background: rgba(255, 255, 255, 0.08);
+  color: ${({ theme }) => theme.white};
+  border-radius: 0.6rem;
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+  font-size: 1.2rem;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.16);
+  }
 `;

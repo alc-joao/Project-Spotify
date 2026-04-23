@@ -1,5 +1,4 @@
 'use client';
-
 import styled from 'styled-components';
 import Link from 'next/link';
 
@@ -55,7 +54,6 @@ export const HomeLink = styled(Link)`
     background: #3be477;
   }
 `;
-
 
 export const HelpLink = styled(Link)`
   color: ${({ theme }) => theme.white};

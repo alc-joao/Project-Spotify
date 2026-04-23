@@ -1,11 +1,13 @@
 'use client';
 
 import { FC, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import * as S from './styles';
 import { RightSidebarC as C } from './constants';
 
 export const RightSidebar: FC = () => {
   const [isOpen, setIsOpen] = useState(true);
+  const router = useRouter();
 
   const handleClose = () => {
     setIsOpen(false);
@@ -13,6 +15,10 @@ export const RightSidebar: FC = () => {
 
   const handleOpen = () => {
     setIsOpen(true);
+  };
+
+  const handleOpenSettings = () => {
+    router.push('/settings');
   };
 
   return (
@@ -30,7 +36,9 @@ export const RightSidebar: FC = () => {
               ))}
             </S.Actions>
           </S.WrapperActions>
+
           <S.FirstParagraph>{C.firstParagraph}</S.FirstParagraph>
+
           <S.WarapperLoad>
             {[1, 2, 3].map((_, index) => (
               <S.FriendBlock key={index}>
@@ -40,12 +48,15 @@ export const RightSidebar: FC = () => {
               </S.FriendBlock>
             ))}
           </S.WarapperLoad>
+
           <S.SecondParagraph>{C.secondParagraph}</S.SecondParagraph>
+
           <S.WrapperBtn>
-            <S.BtnSettings>{C.btnSettings}</S.BtnSettings>
+            <S.BtnSettings onClick={handleOpenSettings}>{C.btnSettings}</S.BtnSettings>
           </S.WrapperBtn>
         </S.Wrapper>
       </S.RightSidebar>
+
       <S.OpenButton onClick={handleOpen}>
         <img src={C.openButton.icon} alt={C.openButton.alt} />
       </S.OpenButton>

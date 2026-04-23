@@ -1,0 +1,16 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Playlist {
+  id        String   @id @default(cuid())
+  name      String
+  cover     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

@@ -9,6 +9,9 @@
     "lint": "eslint src --ext .ts,.tsx,.js,.jsx"
   },
   "dependencies": {
+    "@prisma/adapter-better-sqlite3": "^7.8.0",
+    "@prisma/client": "^7.8.0",
+    "better-sqlite3": "^12.9.0",
     "gsap": "^3.13.0",
     "next": "15.4.6",
     "react": "19.1.0",
@@ -40,6 +43,7 @@
     "jiti": "^2.5.1",
     "lint-staged": "^16.1.5",
     "prettier": "^3.6.2",
+    "prisma": "^7.8.0",
     "typescript": "^5",
     "typescript-eslint": "^8.40.0"
   }
