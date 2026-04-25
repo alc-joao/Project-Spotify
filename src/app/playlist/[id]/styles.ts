@@ -4,11 +4,13 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   min-height: 100vh;
+  height: 100vh;
+  overflow-y: auto;
   background:
     linear-gradient(180deg, rgba(80, 80, 80, 0.45) 0%, rgba(18, 18, 18, 1) 38%),
     ${({ theme }) => theme.black};
   color: ${({ theme }) => theme.white};
-  padding: 4rem;
+  padding: 0 4rem 4rem;
 `;
 
 export const Header = styled.div`
@@ -97,5 +99,141 @@ export const ActionButton = styled.button`
 
   &:hover {
     background: rgba(255, 255, 255, 0.16);
+  }
+`;
+
+export const SongsList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
+
+export const SongRow = styled.div<{ $active?: boolean }>`
+  display: grid;
+  grid-template-columns: 4rem 1fr auto;
+  align-items: center;
+  gap: 1.6rem;
+  padding: 1rem 1.2rem;
+  border-radius: 0.8rem;
+  cursor: pointer;
+  background: ${({ $active }) => ($active ? 'rgba(30, 215, 96, 0.12)' : 'transparent')};
+
+  &:hover {
+    background: ${({ $active }) =>
+      $active ? 'rgba(30, 215, 96, 0.16)' : 'rgba(255, 255, 255, 0.06)'};
+  }
+`;
+
+export const SongIndex = styled.span`
+  font-size: 1.6rem;
+  color: ${({ theme }) => theme.cuteGrey};
+  text-align: center;
+`;
+
+export const SongMain = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  min-width: 0;
+`;
+
+export const SongCover = styled.img`
+  width: 5rem;
+  height: 5rem;
+  object-fit: cover;
+  border-radius: 0.6rem;
+  flex-shrink: 0;
+`;
+
+export const SongInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+`;
+
+export const SongTitle = styled.p`
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: ${({ theme }) => theme.white};
+`;
+
+export const SongArtist = styled.p`
+  margin: 0.4rem 0 0;
+  font-size: 1.4rem;
+  color: ${({ theme }) => theme.cuteGrey};
+`;
+
+export const RemoveButton = styled.button`
+  border: none;
+  background: transparent;
+  color: ${({ theme }) => theme.cuteGrey};
+  cursor: pointer;
+  font-size: 1.3rem;
+  font-weight: 600;
+  padding: 0.8rem 1rem;
+  border-radius: 999rem;
+
+  &:hover {
+    color: ${({ theme }) => theme.white};
+    background: rgba(255, 255, 255, 0.08);
+  }
+`;
+
+export const CatalogSection = styled.div`
+  margin-top: 4rem;
+  padding-top: 2.4rem;
+  border-top: 0.1rem solid rgba(255, 255, 255, 0.08);
+`;
+
+export const CatalogTitle = styled.h2`
+  margin: 0 0 1.6rem;
+  font-size: 2.4rem;
+  font-weight: 700;
+`;
+
+export const CatalogList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
+
+export const CatalogRow = styled.div`
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 1.6rem;
+  padding: 1rem 1.2rem;
+  border-radius: 0.8rem;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.06);
+  }
+`;
+
+export const CatalogMain = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  min-width: 0;
+`;
+
+export const AddButton = styled.button`
+  border: none;
+  background: rgba(255, 255, 255, 0.08);
+  color: ${({ theme }) => theme.white};
+  border-radius: 999rem;
+  padding: 0.8rem 1.4rem;
+  cursor: pointer;
+  font-size: 1.3rem;
+  font-weight: 600;
+
+  &:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.16);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
   }
 `;

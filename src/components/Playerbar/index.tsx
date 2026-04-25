@@ -1,22 +1,38 @@
 'use client';
+
 import { FC } from 'react';
 import * as S from './styles';
 import { PlayerBarC as C } from './constants';
 import { usePlayerBarAnimation } from './animation';
 import { LikeButton } from '@/components/LikeButton';
+import { usePlayer } from '@/contexts/player-context';
 
 export const PlayerBar: FC = () => {
-  const { isPlaying, volume, handlePlayerAction, handleVolumeChange } = usePlayerBarAnimation();
+  const { volume, handlePlayerAction, handleVolumeChange } = usePlayerBarAnimation();
+  const { currentSong, isPlaying, togglePlay } = usePlayer();
+
+  const music = currentSong || C.music;
+
+  const handleAction = (id: string) => {
+    if (id === 'toggle-play') {
+      togglePlay();
+      return;
+    }
+
+    handlePlayerAction(id);
+  };
 
   return (
     <S.PlayerBar>
       <S.Left>
-        <S.Cover src={C.music.cover} alt={C.music.title} />
+        <S.Cover src={music.cover || '/imgs/sidebar/default-playlist.jpg'} alt={music.title} />
+
         <S.MusicInfo>
-          <S.Title>{C.music.title}</S.Title>
-          <S.Artist>{C.music.artist}</S.Artist>
+          <S.Title>{music.title}</S.Title>
+          <S.Artist>{music.artist}</S.Artist>
         </S.MusicInfo>
-        <LikeButton musicId={C.music.id} />
+
+        <LikeButton musicId={music.id} />
       </S.Left>
 
       <S.Center>
@@ -28,7 +44,7 @@ export const PlayerBar: FC = () => {
               <S.ControlButton
                 key={item.id}
                 type="button"
-                onClick={() => handlePlayerAction(item.id)}
+                onClick={() => handleAction(item.id)}
                 $isMain={isMainButton}
                 $active={item.active}
               >
@@ -51,7 +67,7 @@ export const PlayerBar: FC = () => {
           <S.Time>{C.progress.currentTime}</S.Time>
 
           <S.ProgressBar>
-            <S.Progress />
+            <S.Progress $isPlaying={isPlaying} />
           </S.ProgressBar>
 
           <S.Time>{C.progress.duration}</S.Time>
@@ -64,7 +80,7 @@ export const PlayerBar: FC = () => {
             if (item.id === 'volume') {
               return (
                 <S.VolumeControl key={item.id}>
-                  <S.IconButton type="button" onClick={() => handlePlayerAction(item.id)}>
+                  <S.IconButton type="button" onClick={() => handleAction(item.id)}>
                     <img src={item.icon} alt={item.alt} />
                   </S.IconButton>
 
@@ -82,7 +98,7 @@ export const PlayerBar: FC = () => {
             }
 
             return (
-              <S.IconButton key={item.id} type="button" onClick={() => handlePlayerAction(item.id)}>
+              <S.IconButton key={item.id} type="button" onClick={() => handleAction(item.id)}>
                 <img src={item.icon} alt={item.alt} />
               </S.IconButton>
             );

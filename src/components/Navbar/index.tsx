@@ -8,9 +8,17 @@ import { useNavbarAnimation } from './animation';
 
 type NavbarProps = {
   scrollContainerId: string;
+  searchValue?: string;
+  onSearchChange?: (value: string) => void;
+  searchPlaceholder?: string;
 };
 
-export const Navbar: FC<NavbarProps> = ({ scrollContainerId }) => {
+export const Navbar: FC<NavbarProps> = ({
+  scrollContainerId,
+  searchValue = '',
+  onSearchChange,
+  searchPlaceholder,
+}) => {
   const router = useRouter();
   const pathname = usePathname();
 
@@ -29,7 +37,7 @@ export const Navbar: FC<NavbarProps> = ({ scrollContainerId }) => {
   };
 
   const handleGoToSearch = () => {
-    if (pathname !== '/search') {
+    if (!onSearchChange && pathname !== '/search') {
       router.push('/search');
     }
   };
@@ -48,9 +56,11 @@ export const Navbar: FC<NavbarProps> = ({ scrollContainerId }) => {
         <S.SearchLabel onClick={handleGoToSearch}>
           <S.SearchIcon src={C.searchBox.icon} alt={C.searchBox.alt} />
           <S.Input
-            placeholder={C.searchBox.placeholder}
+            value={searchValue}
+            placeholder={searchPlaceholder || C.searchBox.placeholder}
             onFocus={handleGoToSearch}
-            readOnly={pathname !== '/search'}
+            onChange={(event) => onSearchChange?.(event.target.value)}
+            readOnly={!onSearchChange && pathname !== '/search'}
           />
         </S.SearchLabel>
       </S.WrapperBtnSheach>
